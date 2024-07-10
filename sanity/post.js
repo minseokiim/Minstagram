@@ -65,6 +65,24 @@ const postSchema = {
       validation: (Rule) => Rule.unique(),
     },
   ],
+  //프리뷰 만들기
+  preview: {
+    select: {
+      title: "comments.0.comment",
+      authorName: "author.name",
+      authorUsername: "author.username",
+      media: "photo",
+    },
+    //원하는대로 객체 조절
+    prepare(selection) {
+      const { title, authorName, authorUsername, media } = selection;
+      return {
+        title,
+        subtitle: `by ${authorName} (${authorUsername})`,
+        media,
+      };
+    },
+  },
 };
 
 export default postSchema;

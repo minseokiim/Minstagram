@@ -59,6 +59,13 @@ const userSchema = {
       validation: (Rule) => Rule.unique(),
     },
   ],
+  //프리뷰 만들기
+  preview: {
+    select: {
+      title: "name",
+      subtitle: "username",
+    },
+  },
 };
 
 export default userSchema;
