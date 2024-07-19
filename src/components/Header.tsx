@@ -9,26 +9,29 @@ import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import NewFillIcon from "./ui/icons/NewFillIcon";
 import NewIcon from "./ui/icons/NewIcon";
 import ColorButton from "./ColorButton";
+import { useSession, signIn, signOut } from "next-auth/react";
+
+const menu = [
+  {
+    href: "/",
+    icon: <HomeIcon />,
+    clickedIcon: <HomeFillIcon />,
+  },
+  {
+    href: "/search",
+    icon: <SearchIcon />,
+    clickedIcon: <SearchFillIcon />,
+  },
+  {
+    href: "/new",
+    icon: <NewIcon />,
+    clickedIcon: <NewFillIcon />,
+  },
+];
 
 export default function Header() {
-  const menu = [
-    {
-      href: "/",
-      icon: <HomeIcon />,
-      clickedIcon: <HomeFillIcon />,
-    },
-    {
-      href: "/search",
-      icon: <SearchIcon />,
-      clickedIcon: <SearchFillIcon />,
-    },
-    {
-      href: "/new",
-      icon: <NewIcon />,
-      clickedIcon: <NewFillIcon />,
-    },
-  ];
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   return (
     <div className="flex justify-between items-center px-6">
@@ -44,7 +47,12 @@ export default function Header() {
             </Link>
           </li>
         ))}
-        <ColorButton text="sign in" onClick={() => {}} />
+
+        {session ? (
+          <ColorButton text="sign out" onClick={() => signOut()} />
+        ) : (
+          <ColorButton text="sign in" onClick={() => signIn()} />
+        )}
       </ul>
     </div>
   );
