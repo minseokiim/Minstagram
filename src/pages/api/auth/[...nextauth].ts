@@ -32,3 +32,5 @@ export const authOptions: NextAuthOptions = {
 };
 
 export default NextAuth(authOptions);
+
+// https://next-auth.js.org/getting-started/typescript

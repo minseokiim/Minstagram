@@ -50,13 +50,13 @@ export default function Header() {
           </li>
         ))}
 
-        {user ? (
+        {user && (
           <li>
-            <Link href={`/user/${user.name}`}></Link>
-            <Avatar image={user.image} />{" "}
+            <Link href={`/user/${user.username}`}>
+              <Avatar image={user.image} />
+            </Link>
+         
           </li>
-        ) : (
-          ""
         )}
 
         <li>
