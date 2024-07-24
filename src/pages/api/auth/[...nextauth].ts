@@ -1,3 +1,4 @@
+import { addUser } from "@/service/user";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -17,8 +18,22 @@ export const authOptions: NextAuthOptions = {
     newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   callbacks: {
+    async signIn({ user: { id, name, image, email } }) {
+      if (!email) {
+        return false;
+      }
+
+      addUser({
+        id,
+        name: name || "",
+        email,
+        image,
+        username: email?.split("@")[0],
+      });
+      return true;
+    },
     session({ session }) {
-      console.log(session);
+      console.log("session", session);
       const user = session?.user;
       if (user) {
         session.user = {
