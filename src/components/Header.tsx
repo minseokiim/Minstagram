@@ -38,7 +38,7 @@ export default function Header() {
   return (
     <div className="flex justify-between items-center px-6">
       <Link href="./">
-        <h1 className="text-3xl font-bold">Instagram</h1>
+        <h1 className="text-3xl font-bold">Minstagram</h1>
       </Link>
 
       <ul className="flex gap-4 items-center p-4">
@@ -55,7 +55,6 @@ export default function Header() {
             <Link href={`/user/${user.username}`}>
               <Avatar image={user.image} />
             </Link>
-         
           </li>
         )}
 
