@@ -33,7 +33,6 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     session({ session }) {
-      // console.log("session", session);
       const user = session?.user;
       if (user) {
         session.user = {
