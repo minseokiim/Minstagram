@@ -26,3 +26,8 @@ export default async function SideBar({
     </>
   );
 }
+
+//서버 컴포넌트, 페이지에서 prop전달해주면 그대로 보여주는 정적 컴포넌트임
+// SideBar 컴포넌트는 부모 컴포넌트인 HomePage로부터 받은 user 데이터를 활용하여 렌더링
+
+// 만약 SideBar에서 직접 getServerSession이나 다른 비동기 요청을 통해 세션 정보를 가져오도록 한다면, SideBar는 동적 컴포넌트
