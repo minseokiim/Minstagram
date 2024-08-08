@@ -10,15 +10,19 @@ export default async function SideBar({
 }: Props) {
   return (
     <>
-      {image && <Avatar image={image} />}
-      <p>{username}</p>
-      <p className="text-gray-600">{name}</p>
-      <p className="font-bold">{email}</p>
-
-      <p>
+      <div className="flex items-center">
+        {image && <Avatar image={image} />}
+        <div className="ml-4">
+          <p className="text-gray-600 font-bold">{username}</p>
+          <p className="text-lg text-neutral-500 leading-4">{name}</p>
+        </div>
+      </div>
+      <p className="text-sm text-neutral-500 mt-8">
         About ` Help ` Press ` API ` Jobs ` Privacy ` Terms ` Location` Language
       </p>
-      <p>@Copyright MINSTAGRAM from minseokiim</p>
+      <p className="font-bold text-sm mt-8 text-neutral-500">
+        @Copyright MINSTAGRAM from minseokiim
+      </p>
     </>
   );
 }

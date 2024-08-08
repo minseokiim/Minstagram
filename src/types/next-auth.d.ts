@@ -1,5 +1,4 @@
 import { UserType } from "@/model/user";
-import NextAuth, { DefaultSession } from "next-auth";
 
 // * d.ts? next-auth에 기본적으로 정의된 타입 정의 파일
 
