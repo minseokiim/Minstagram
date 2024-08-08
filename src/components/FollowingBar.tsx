@@ -1,7 +1,11 @@
 "use client";
 //sanity에서 사용자 정보 읽어와야 함(팔로잉 정보..)
+import useSWR from "swr";
 
 export default function FollowingBar() {
+  const { data, isLoading, error } = useSWR("/api/hello");
+  console.log("swr 컨텍스트 테스트", data);
+
   return <div className="bg-neutral-50">FollowingBar</div>;
 }
 

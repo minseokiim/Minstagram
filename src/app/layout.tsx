@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Auth0 from "next-auth/providers/auth0";
 import AuthContext from "@/context/AuthContext";
+import SWRConfigContext from "@/context/SWRConfigContext";
 
 // 레이아웃(폰트, 골격)
 const openSans = Open_Sans({ subsets: ["latin"] });
@@ -26,7 +27,9 @@ export default function RootLayout({
           <header className="sticky top-0 bg-white z-10 border-b">
             <Header />
           </header>
-          <main>{children}</main>
+          <main>
+            <SWRConfigContext>{children}</SWRConfigContext>
+          </main>
         </AuthContext>
       </body>
     </html>
