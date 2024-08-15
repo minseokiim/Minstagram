@@ -23,3 +23,6 @@ export default function ScrollableBar({
     </Carousel>
   );
 }
+
+// 주의 : React Carousel사용시에 ul이랑 li 사용하면 작동이 안돼서 지워줌.
+// react-multi-carousel은 자식 요소로 간단한 구조를 기대한다는 이유.
