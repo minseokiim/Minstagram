@@ -1,18 +1,13 @@
-### Full-stack web application with Next.js
+## Full-stack web application with Next.js
 
-## Getting Started
+client : Next.js
+server : Next.jS
+Data Management : Sanity
 
-First, run the development server:
+### Getting Started
+
 npm run dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Stack
-
-Next 14
-NextAuth
-Sanity
-SWR
-TailwindCSS
+Next 14 / NextAuth / Sanity / SWR / TailwindCSS
