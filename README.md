@@ -1,13 +1,14 @@
-## Full-stack web application with Next.js
+## 🌷Full-stack web application with Next.js🌷
 
-client : Next.js
-server : Next.jS
-Data Management : Sanity
+### 🍀Stack
 
-### Getting Started
+- **Client:** Next.js 14 <br/>
+- **Server:** Next.js 14 <br/>
+- **Data Management:** Sanity <br/>
+- **Data Fetching:** SWR <br/>
+- **Auth:** NextAuth <br/>
+- **CSS:** Tailwind CSS <br/><br/>
+
+### 🍀Getting Started
 
 npm run dev
-
-### Stack
-
-Next 14 / NextAuth / Sanity / SWR / TailwindCSS
