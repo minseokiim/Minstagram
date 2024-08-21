@@ -1,4 +1,6 @@
+import { SimplePost } from "@/model/post";
 import { client } from "./sanity";
+import { urlFor } from "./sanity";
 export async function getFollowingPostsOf(username: string) {
   const simplePostProjection = `
 ...,
@@ -15,8 +17,14 @@ export async function getFollowingPostsOf(username: string) {
 
   //** GROQ로 join 쿼리 만들기
   //https://www.sanity.io/docs/query-cheat-sheet
-  return client.fetch(`
+  return client
+    .fetch(
+      `
     *[_type=="post" && author->username=="${username}"
     || author._ref in *[_type=="user" && username=="${username}"].following[]._ref]
-   | order(_createdAt desc){${simplePostProjection}} `);
+   | order(_createdAt desc){${simplePostProjection}} `
+    )
+    .then((posts) =>
+      posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
+    );
 }

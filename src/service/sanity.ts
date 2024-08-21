@@ -1,4 +1,6 @@
 import { createClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -7,3 +9,12 @@ export const client = createClient({
   apiVersion: "2024-07-24", // 현재 날짜
   token: process.env.SANITY_SECRET_TOKEN,
 });
+
+// * sanity 이미지 최적화 해서 가져오는 법
+// https://www.sanity.io/docs/image-url
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: SanityImageSource) {
+  return builder.image(source).width(800).url();
+}
