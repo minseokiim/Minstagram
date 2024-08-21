@@ -1,4 +1,5 @@
-## 🌷Full-stack web application with Next.js🌷
+
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/b688acd1-6c3c-42a0-baa5-eb7db2e00db3">
 
 ### 🍀Stack
 
