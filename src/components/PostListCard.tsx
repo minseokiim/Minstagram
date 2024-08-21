@@ -6,9 +6,10 @@ import ActionBar from "./ActionBar";
 
 type Props = {
   post: SimplePost;
+  priority?: boolean;
 };
 
-export default function PostListCard({ post }: Props) {
+export default function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, createdAt, likes, text } = post;
   return (
     <article className="rounded-lg shadow-md border border-gray-200">
@@ -23,6 +24,7 @@ export default function PostListCard({ post }: Props) {
         width={500}
         height={500}
         className="w-full object-cover aspect-square"
+        priority={priority}
       />
 
       <ActionBar
