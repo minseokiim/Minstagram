@@ -1,4 +1,3 @@
-
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/b688acd1-6c3c-42a0-baa5-eb7db2e00db3">
 
 ### 🍀Stack
@@ -35,3 +34,6 @@
 
 - **SWR(Stale While Revalidate) 사용법 :**
   https://kmmk808.tistory.com/210
+
+- **Next Hydration 오류(Warning: Prop `style` did not match.) 이유와 수정 방법 :**
+  https://kmmk808.tistory.com/219

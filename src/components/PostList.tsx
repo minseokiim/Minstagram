@@ -1,8 +1,8 @@
 "use client";
 import { SimplePost } from "@/model/post";
-import { GridLoader } from "react-spinners";
 import useSWR from "swr";
 import PostListCard from "./PostListCard";
+import GridSpinner from "./GridSpinner";
 
 export default function PostList() {
   const { data: posts, isLoading: loading } =
@@ -13,7 +13,7 @@ export default function PostList() {
     <section>
       {loading && (
         <div className="text-center mt-32">
-          <GridLoader color="red" />
+          <GridSpinner />
         </div>
       )}
       {posts && (
