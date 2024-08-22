@@ -12,7 +12,7 @@ export default function FollowingBar() {
   const users = data?.following;
 
   return (
-    <section className="w-full flex justify-center items-center p-4 shadow-sm mb-4 rounded-lg shadow-neutral-300 min-h-[90px] overflow-x-auto">
+    <section className="relative z-0 w-full flex justify-center items-center p-4 shadow-sm mb-4 rounded-lg shadow-neutral-300 min-h-[90px] overflow-x-auto">
       {loading ? (
         <PulseLoader size={10} color="red" />
       ) : (
