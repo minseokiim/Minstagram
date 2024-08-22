@@ -1,10 +1,17 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getFollowingPostsOf } from "@/service/posts";
 import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { getPost } from "@/service/posts";
 
-// 전체 포스트를 받는 api
-export async function GET() {
+type Context = {
+  params: {
+    id: string;
+  };
+};
+
+// 특정 id 포스트를 받는 api
+export async function GET(requesT: NextRequest, context: Context) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
@@ -12,7 +19,5 @@ export async function GET() {
     return new Response("Authentication error", { status: 401 });
   }
 
-  return getFollowingPostsOf(user.username).then((data) =>
-    NextResponse.json(data)
-  );
+  return getPost(context.params.id).then((data) => NextResponse.json(data));
 }

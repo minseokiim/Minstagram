@@ -7,7 +7,6 @@ import GridSpinner from "./GridSpinner";
 export default function PostList() {
   const { data: posts, isLoading: loading } =
     useSWR<SimplePost[]>("/api/posts");
-  console.log("data", posts);
 
   return (
     <section>

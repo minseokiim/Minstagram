@@ -16,3 +16,5 @@ export default function ModalPortal({ children }: Props) {
   const el = document.getElementById("portal") as Element;
   return ReactDOM.createPortal(children, el);
 }
+
+//layout에 있는 상위 div요소에 createPortal로 연결
