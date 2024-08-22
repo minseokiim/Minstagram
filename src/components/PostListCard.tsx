@@ -6,6 +6,7 @@ import CommentForm from "./CommentForm";
 import ActionBar from "./ActionBar";
 import { useState } from "react";
 import ModalPortal from "./ui/ModalPortal";
+import PostModal from "./PostModal";
 
 type Props = {
   post: SimplePost;
@@ -43,9 +44,9 @@ export default function PostListCard({ post, priority = false }: Props) {
 
       {openModal && (
         <ModalPortal>
-          <div className="fixed top-0 left-0 w-full h-full bg-slate-500 z-50">
-            상세 페이지
-          </div>
+          <PostModal onClose={()=>setOpenModal(false)}>
+              상세 페이지
+          </PostModal>
         </ModalPortal>
       )}
     </article>
