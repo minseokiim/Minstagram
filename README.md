@@ -17,7 +17,7 @@
 
 ### 🍀Posts About @Minstagram
 
-- **next/image를 사용 할 때 next.config.js에 등록해줘야 하는 이유 :**
+- **next.config.js의 images.domains 설정 :**
   https://kmmk808.tistory.com/218
 
 - **Next에서 로그인 정보 가져오는 법 :**
@@ -26,7 +26,7 @@
 - **@react-multi-carousel 사용법 및 적용 안되는 오류 해결 :**
   https://kmmk808.tistory.com/214
 
-- **Headless CMS, Sanity 사용법 및 Next 오류 해결법(NEXT_PUBLIC_SANITY_DATASET) :**
+- **Sanity 사용법 및 오류 해결법(NEXT_PUBLIC_SANITY_DATASET) :**
   https://kmmk808.tistory.com/209
 
 - **Sanity 쿼리 언어 GROQ (Graph-Relational Object Queries) :**
@@ -35,5 +35,5 @@
 - **SWR(Stale While Revalidate) 사용법 :**
   https://kmmk808.tistory.com/210
 
-- **Next Hydration 오류(Warning: Prop `style` did not match.) 이유와 수정 방법 :**
+- **Next Hydration 관련 오류(Warning: Prop `style` did not match.) 이유와 해결 방법 :**
   https://kmmk808.tistory.com/219
