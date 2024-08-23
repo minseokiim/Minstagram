@@ -1,4 +1,3 @@
-import { StringComponents } from "sanity";
 import { client } from "./sanity";
 
 type OAuthUser = {
@@ -36,3 +35,7 @@ export async function getUserByUserName(username: string) {
 // Sanity 쿼리 언어 GROQ를 사용하는 방법 : https://www.sanity.io/docs/groq
 // https://www.sanity.io/docs/how-queries-work
 // https://www.sanity.io/docs/query-cheat-sheet
+
+export async function getUserInfo() {
+  return client.fetch(`*[_type=="user"]`);
+}

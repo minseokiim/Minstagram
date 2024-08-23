@@ -1,4 +1,5 @@
+import SearchForm from "@/components/SearchForm";
 
 export default function page() {
-  return <div>search</div>;
+  return <SearchForm />;
 }
