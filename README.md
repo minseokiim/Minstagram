@@ -37,3 +37,6 @@
 
 - **Next Hydration 관련 오류(Warning: Prop `style` did not match.) 이유와 해결 방법 :**
   https://kmmk808.tistory.com/219
+
+- **debounce, throttle 사용하는 이유 + SWR에서 debounce 훅 사용하기 :**
+  https://kmmk808.tistory.com/220

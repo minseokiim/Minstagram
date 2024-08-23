@@ -4,14 +4,16 @@ import { SearchUserType } from "@/model/user";
 import { FormEvent, useState } from "react";
 import GridSpinner from "./GridSpinner";
 import UserCard from "./UserCard";
+import useDebounce from "./../hooks/debounce";
 
 export default function UserSearch() {
   const [keyword, setKeyword] = useState("");
+  const debouncedSearch = useDebounce(keyword);
   const {
     data: users,
     isLoading,
     error,
-  } = useSWR<SearchUserType[]>(`/api/search/${keyword}`);
+  } = useSWR<SearchUserType[]>(`/api/search/${debouncedSearch}`);
   //keyword 입력시에 useSWR이 다시 네트워크 요청 -> 상태가 업데이트 됨.
   // 따라서 onSubmit에서 따로 처리할 필요 없음.
 
