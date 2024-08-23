@@ -3,24 +3,18 @@ import useSWR from "swr";
 import { UserType } from "@/model/user";
 import { useState } from "react";
 
-export default function SearchForm() {
-  const { data, isLoading } = useSWR<UserType[]>("/api/user");
+export default function UserSearch() {
   const [keyword, setKeyword] = useState<string>("");
+  const { data, isLoading } = useSWR<UserType[]>(`/api/search/${keyword}`);
+  console.log(data);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setKeyword(e.target.value);
   };
 
-  const filteredData = data?.filter(
-    (user) =>
-      user.name.toLowerCase().includes(keyword.toLowerCase()) ||
-      user.username.toLowerCase().includes(keyword.toLowerCase())
-  );
-
   return (
     <div>
-      {/* 2. 검색창 */}
       <form>
         <input
           type="text"
@@ -31,10 +25,8 @@ export default function SearchForm() {
         />
       </form>
 
-      {/* 1. 검색어 없을 때 전체 사용자 뜨게
-       3. 검색어 있을 때에는 필터링 되어서 뜨게 */}
       <ul>
-        {filteredData?.map((user, index) => (
+        {data?.map((user, index) => (
           <li key={index}>
             {/* 5. 컴포넌트 만들어서 빼주기 */}
             <span>{user.name} </span>

@@ -1,5 +1,4 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getFollowingPostsOf } from "@/service/posts";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { getPost } from "@/service/posts";
@@ -11,7 +10,7 @@ type Context = {
 };
 
 // 특정 id 포스트를 받는 api
-export async function GET(requesT: NextRequest, context: Context) {
+export async function GET(_: NextRequest, context: Context) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 

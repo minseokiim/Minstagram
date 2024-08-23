@@ -36,6 +36,13 @@ export async function getUserByUserName(username: string) {
 // https://www.sanity.io/docs/how-queries-work
 // https://www.sanity.io/docs/query-cheat-sheet
 
-export async function getUserInfo() {
-  return client.fetch(`*[_type=="user"]`);
+export async function searchUsers(keyword?: string) {
+  const query = keyword
+    ? `&&(name match "${keyword}")||(username match "${keyword}")`
+    : "";
+  return client.fetch(`*[_type=="user" ${query}]{
+    ...,
+    "following":count(following),
+     "followers":count(followers),
+    }`);
 }

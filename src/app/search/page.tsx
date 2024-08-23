@@ -1,5 +1,5 @@
-import SearchForm from "@/components/SearchForm";
+import UserSearch from "@/components/UserSearch";
 
 export default function page() {
-  return <SearchForm />;
+  return <UserSearch />;
 }
