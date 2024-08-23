@@ -18,5 +18,5 @@ export default async function page({ params: { username } }: Props) {
     notFound();
   }
 
-  return <UserProfile />;
+  return <UserProfile user={user} />;
 }

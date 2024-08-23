@@ -40,3 +40,6 @@
 
 - **debounce, throttle 사용하는 이유 + SWR에서 debounce 훅 사용하기 :**
   https://kmmk808.tistory.com/220
+
+- **Next에서 not-found.tsx로 NotFound 페이지 만들기(컴포넌트 x) :**
+  https://kmmk808.tistory.com/221

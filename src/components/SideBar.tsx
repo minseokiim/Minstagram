@@ -1,8 +1,8 @@
 import Avatar from "@/components/Avatar";
-import { UserType } from "@/model/user";
+import { AuthUserType } from "@/model/user";
 
 type Props = {
-  user: UserType;
+  user: AuthUserType;
 };
 
 export default async function SideBar({

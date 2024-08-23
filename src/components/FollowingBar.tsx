@@ -1,5 +1,5 @@
 "use client";
-import { DetailUserType } from "@/model/user";
+import { HomeUserType } from "@/model/user";
 import { PulseLoader } from "react-spinners";
 //sanity에서 사용자 정보 읽어와야 함(팔로잉 정보..)
 import useSWR from "swr";
@@ -8,7 +8,7 @@ import Avatar from "./Avatar";
 import ScrollableBar from "./ScrollableBar";
 
 export default function FollowingBar() {
-  const { data, isLoading: loading, error } = useSWR<DetailUserType>("/api/me");
+  const { data, isLoading: loading, error } = useSWR<HomeUserType>("/api/me");
   const users = data?.following;
 
   return (

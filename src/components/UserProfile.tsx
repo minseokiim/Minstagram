@@ -1,5 +1,10 @@
 "use client";
+import { ProfileUserType } from "@/model/user";
 
-export default function UserProfile() {
-  return <div></div>;
+type Props = {
+  user: ProfileUserType;
+};
+
+export default function UserProfile({ user }: Props) {
+  return <p>{user.username}</p>;
 }

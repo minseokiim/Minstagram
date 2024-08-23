@@ -11,7 +11,7 @@ export default function UserCard({
   return (
     <Link
       className="flex items-center w-full rounded border border-neutral-300 mb-2 p-4 bg-white hover:bg-neutral-50 "
-      href={`/users/${username}`}
+      href={`/user/${username}`}
     >
       <Avatar image={image}></Avatar>
       <div className="text-neutral-500">
