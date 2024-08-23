@@ -10,7 +10,7 @@ type OAuthUser = {
 };
 
 export async function addUser({ id, username, email, name, image }: OAuthUser) {
-  return client.createIfNotExists({
+  return await client.createIfNotExists({
     _id: id,
     _type: "user",
     username: username,
@@ -24,7 +24,7 @@ export async function addUser({ id, username, email, name, image }: OAuthUser) {
 }
 
 export async function getUserByUserName(username: string) {
-  return client.fetch(`*[_type=="user" && username=="${username}"][0]{
+  return await client.fetch(`*[_type=="user" && username=="${username}"][0]{
     ...,
     "id":_id,
     following[]->{username,image},
@@ -41,7 +41,7 @@ export async function searchUsers(keyword?: string) {
   const query = keyword
     ? `&&(name match "${keyword}")||(username match "${keyword}")`
     : "";
-  return client
+  return await client
     .fetch(
       `*[_type=="user" ${query}]{
     ...,
@@ -56,4 +56,28 @@ export async function searchUsers(keyword?: string) {
         followers: user.followers ?? 0,
       }))
     );
+}
+
+export async function getUserProfile(username: string) {
+  const user = await client.fetch(
+    `*[_type=="user" && username=="${username}"][0]{
+      ...,
+      "id": _id,
+      "following": count(following),
+      "followers": count(followers),
+      "posts": count(*[_type=="post" && author->username=="${username}"])
+    }`
+  );
+
+  // 사용자 없으면 null 반환
+  if (!user) {
+    return null;
+  }
+
+   return {
+    ...user,
+    following: user.following ?? 0,
+    followers: user.followers ?? 0,
+    posts: user.posts ?? 0,
+  };
 }

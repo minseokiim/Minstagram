@@ -18,7 +18,7 @@ export async function getFollowingPostsOf(username: string) {
 
   //** GROQ로 join 쿼리 만들기
   //https://www.sanity.io/docs/query-cheat-sheet
-  return client
+  return await client
     .fetch(
       `
     *[_type=="post" && author->username=="${username}"
@@ -31,7 +31,7 @@ export async function getFollowingPostsOf(username: string) {
 }
 
 export async function getPost(id: String) {
-  return client
+  return await client
     .fetch(
       `*[_type=="post" && _id=="${id}"][0]{
     ...,
