@@ -10,14 +10,14 @@
 - **CSS:** Tailwind CSS <br/>
 - **Deployment:** <br/><br/>
 
-### 🍀Getting Started
+### 💻Getting Started
 
 - `npm run dev` (localhost:3000)<br/>
 - `sanity dev` (localhost:3333)<br/><br/>
 
-### 🍀Posts About @Minstagram
+### 📰Posts About @Minstagram
 
-- **next.config.js의 images.domains 설정 :**
+- **next.config.js의 remotePatterns 설정 :**
   https://kmmk808.tistory.com/218
 
 - **Next에서 로그인 정보 가져오는 법 :**
@@ -41,5 +41,8 @@
 - **debounce, throttle 사용하는 이유 + SWR에서 debounce 훅 사용하기 :**
   https://kmmk808.tistory.com/220
 
-- **Next에서 not-found.tsx로 NotFound 페이지 만들기(컴포넌트 x) :**
+- **Next에서 조건부 렌더링 없이 404 페이지 만들기(컴포넌트 x) :**
   https://kmmk808.tistory.com/221
+
+- **클라이언트 필터링에서 서버 필터링으로 변경하기(+SWR로 최적화) :**
+  https://kmmk808.tistory.com/222

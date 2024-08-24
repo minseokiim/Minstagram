@@ -14,7 +14,7 @@ export default function UserSearch() {
     isLoading,
     error,
   } = useSWR<SearchUserType[]>(`/api/search/${debouncedSearch}`);
-  //keyword 입력시에 useSWR이 다시 네트워크 요청 -> 상태가 업데이트 됨.
+  // keyword 입력시에 useSWR이 다시 네트워크 요청 -> 상태가 업데이트 됨.
   // 따라서 onSubmit에서 따로 처리할 필요 없음.
 
   const onSubmit = (e: FormEvent) => {
