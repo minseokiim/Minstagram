@@ -1,5 +1,5 @@
 "use client";
-import { SimplePost } from "@/model/post";
+import { SimplePostType } from "@/model/post";
 import Image from "next/image";
 
 import CommentForm from "./CommentForm";
@@ -11,7 +11,7 @@ import PostDetail from "./PostDetail";
 import PostUserAvatar from "./PostUserAvatar";
 
 type Props = {
-  post: SimplePost;
+  post: SimplePostType;
   priority?: boolean;
 };
 

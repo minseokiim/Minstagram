@@ -1,5 +1,5 @@
 //사용자가 클릭하면 확인 가능한 정보
-export type FullPost = {
+export type FullPostType = {
   id: string;
   username: string;
   userImage: string;
@@ -7,16 +7,16 @@ export type FullPost = {
   text: string;
   createdAt: string;
   likes: string[];
-  comments: Comment[];
+  comments: CommentType[];
 };
 
-export type Comment = {
+export type CommentType = {
   comment: string;
   username: string;
   image: string;
 };
 
 // 홈에서 확인 가능한 간단한 정보들, comments배열 대신 숫자만나어게 대체
-export type SimplePost = Omit<FullPost, "comments"> & {
+export type SimplePostType = Omit<FullPostType, "comments"> & {
   comments: number;
 };

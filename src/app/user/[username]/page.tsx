@@ -1,6 +1,7 @@
 import UserProfile from "@/components/UserProfile";
 import { getUserProfile } from "@/service/user";
 import { notFound } from "next/navigation";
+import UserPost from "@/components/UserPost";
 
 type Props = {
   params: {
@@ -18,5 +19,10 @@ export default async function page({ params: { username } }: Props) {
     notFound();
   }
 
-  return <UserProfile user={user} />;
+  return (
+    <>
+      <UserProfile user={user} />
+      <UserPost user={user} />
+    </>
+  );
 }

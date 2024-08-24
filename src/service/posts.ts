@@ -1,9 +1,7 @@
-import { SimplePost } from "@/model/post";
+import { SimplePostType } from "@/model/post";
 import { client } from "./sanity";
 import { urlFor } from "./sanity";
-
-export async function getFollowingPostsOf(username: string) {
-  const simplePostProjection = `
+const simplePostProjection = `
 ...,
 "username":author->username,
 "userImage":author->image,
@@ -14,6 +12,8 @@ export async function getFollowingPostsOf(username: string) {
 "id":_id,
 "createdAt":_createdAt,
 `;
+
+export async function getFollowingPostsOf(username: string) {
   // post.author.username -> post.username 꼴로 바꿔주는 것
 
   //** GROQ로 join 쿼리 만들기
@@ -25,12 +25,10 @@ export async function getFollowingPostsOf(username: string) {
     || author._ref in *[_type=="user" && username=="${username}"].following[]._ref]
    | order(_createdAt desc){${simplePostProjection}} `
     )
-    .then((posts) =>
-      posts.map((post: SimplePost) => ({ ...post, image: urlFor(post.image) }))
-    );
+    .then(mapPosts);
 }
 
-export async function getPost(id: String) {
+export async function getPost(id: string) {
   return await client
     .fetch(
       `*[_type=="post" && _id=="${id}"][0]{
@@ -45,4 +43,47 @@ export async function getPost(id: String) {
     }`
     )
     .then((post) => ({ ...post, image: urlFor(post.image) }));
+}
+
+export async function getPostsOf(username: string) {
+  return await client
+    .fetch(
+      `*[_type=="post" && author->username=="${username}"]|
+      order(_createdAt desc)
+      {
+    ${simplePostProjection}
+    }`
+    )
+    .then(mapPosts);
+}
+
+export async function getLikedPostsOf(username: string) {
+  return await client
+    .fetch(
+      `*[_type=="post" && "${username}" in likes[]->username]|
+      order(_createdAt desc)
+      {
+    ${simplePostProjection}
+    }`
+    )
+    .then(mapPosts);
+}
+
+export async function getSavedPostsOf(username: string) {
+  return await client
+    .fetch(
+      `*[_type=="post" && _id in *[_type=="user" && username=="${username}"].bookmarks[]._ref]
+      | order(_createdAt desc)
+      {
+    ${simplePostProjection}
+    }`
+    )
+    .then(mapPosts);
+}
+
+function mapPosts(posts: SimplePostType[]) {
+  return posts.map((post: SimplePostType) => ({
+    ...post,
+    image: urlFor(post.image),
+  }));
 }
