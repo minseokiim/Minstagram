@@ -13,7 +13,7 @@ export default async function page({ params: { username } }: Props) {
   // 하단 : 올린 post, 북마크 post, 좋아요 post 보여주기(posts,liked,bookmarks)
 
   const user = await getUserProfile(username);
-  console.log(user);
+
   if (!user) {
     notFound();
   }

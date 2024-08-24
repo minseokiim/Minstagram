@@ -19,5 +19,5 @@ export type SearchUserType = AuthUserType & {
 };
 
 export type ProfileUserType = SearchUserType & {
-  post: number;
+  posts: number;
 };
