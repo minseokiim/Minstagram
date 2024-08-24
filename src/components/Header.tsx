@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <div className="flex justify-between items-center px-6">
-      <Link href="./">
+      <Link href="/">
         <h1 className="text-3xl font-bold">Minstagram</h1>
       </Link>
 
