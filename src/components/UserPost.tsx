@@ -25,11 +25,15 @@ export default function UserPost({ user: { username } }: Props) {
 
   return (
     <section>
-      <ul>
+      <ul className="flex justify-center uppercase">
         {tabs.map((tab) => (
-          <li key={tab.type} onClick={()=>setQuery(tab.type)}>
-            <button>{tab.icon}</button>
-            <span>{tab.type}</span>
+          <li
+            key={tab.type}
+            onClick={() => setQuery(tab.type)}
+            className={`mx-12 p-4 cursor-pointer border-black ${tab.type===query && "font-bold border-t"}`}
+          >
+            <button className="scale-150 md:scale-100">{tab.icon}</button>
+            <span className="hidden md:inline">{tab.type}</span>
           </li>
         ))}
       </ul>
