@@ -24,8 +24,8 @@ export default function usePosts() {
         : post.likes.filter((item) => item !== username),
     };
 
-    const newPosts = posts?.map((post) =>
-      post.id === post.id ? newPost : post
+    const newPosts = posts?.map((p) =>
+      p.id === post.id ? newPost : p
     );
 
     return mutate(updateLike(post.id, like), {
