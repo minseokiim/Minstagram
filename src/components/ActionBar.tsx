@@ -20,14 +20,17 @@ export default function ActionBar({ post }: Props) {
   const user = session?.user;
 
   const liked = user ? likes.includes(user.username) : false;
-  const [bookmarked, setBookMarked] = useState(false);
-
   const { setLike } = usePosts();
   const handleLike = (like: boolean) => {
     if (user) {
       setLike(post, user.username, like);
     }
   };
+
+  //북마크는 user에 있는데 api를 두번 호출??
+  //여기서는 클릭되면 상태 변경하고 api호출하는 것만 처리
+  //profile에서 조회할 수 있어야 함.
+  const [bookmarked, setBookMarked] = useState(false);
   return (
     <>
       <div className="flex justify-between my-2 px-4">

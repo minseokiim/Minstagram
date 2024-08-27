@@ -109,3 +109,4 @@ export async function dislikePost(postId: string, userId: string) {
     .unset([`likes[_ref=="${userId}"]`]) //제거
     .commit();
 }
+
