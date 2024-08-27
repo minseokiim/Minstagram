@@ -1,15 +1,14 @@
 "use client";
-import { HomeUserType } from "@/model/user";
 import { PulseLoader } from "react-spinners";
 //sanity에서 사용자 정보 읽어와야 함(팔로잉 정보..)
-import useSWR from "swr";
 import Link from "next/link";
 import Avatar from "./Avatar";
 import ScrollableBar from "./ScrollableBar";
+import useMe from "@/hooks/me";
 
 export default function FollowingBar() {
-  const { data, isLoading: loading, error } = useSWR<HomeUserType>("/api/me");
-  const users = data?.following;
+  const { user, isLoading: loading, error } = useMe();
+  const users = user?.following;
 
   return (
     <section className="relative z-0 w-full flex justify-center items-center p-4 shadow-sm mb-4 rounded-lg shadow-neutral-300 min-h-[90px] overflow-x-auto">
