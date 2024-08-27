@@ -32,16 +32,24 @@ export const authOptions: NextAuthOptions = {
       });
       return true;
     },
-    session({ session }) {
+    session({ session,token }) {
       const user = session?.user;
       if (user) {
         session.user = {
           ...user,
           username: user.email?.split("@")[0] || "",
+          id:token.id as string,
         };
       }
       return session;
     },
+    //https://next-auth.js.org/configuration/callbacks#jwt-callback
+    async jwt({token,user}){
+    if(user){
+        token.id=user.id;
+    }
+return token;
+    } 
   },
 };
 

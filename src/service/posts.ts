@@ -87,3 +87,24 @@ function mapPosts(posts: SimplePostType[]) {
     image: urlFor(post.image),
   }));
 }
+
+export async function likePost(postId: string, userId: string) {
+  return client
+    .patch(postId)
+    .setIfMissing({ likes: [] }) //없으면 빈배열 설정
+    .append("likes", [
+      //있으면 거기에 추가
+      {
+        _ref: userId,
+        _type: "reference",
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
+}
+
+export async function dislikePost(postId: string, userId: string) {
+  return client
+    .patch(postId)
+    .unset([`likes[_ref=="${userId}"]`]) //제거
+    .commit();
+}
