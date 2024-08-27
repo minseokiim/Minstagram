@@ -6,24 +6,35 @@ import { useState } from "react";
 import ToggleButton from "./ui/ToggleButton";
 import HeartFillIcon from "./ui/icons/HeartFillIcon";
 import BookmarkFillIcon from "./ui/icons/BookmarkFillIcon";
+import { SimplePostType } from "@/model/post";
+import { useSession } from "next-auth/react";
+import { useSWRConfig } from "swr";
 
 type Props = {
-  likes: string[];
-  username: String;
-  text?: string;
-  createdAt: string;
+  post: SimplePostType;
 };
 
-export default function ActionBar({ username, createdAt, likes, text }: Props) {
-  const [liked, setLiked] = useState(false);
+export default function ActionBar({ post }: Props) {
+  const { id, username, createdAt, likes, text } = post;
+  const { data: session } = useSession();
+  const user = session?.user;
+
+  const liked = user ? likes.includes(user.username) : false;
   const [bookmarked, setBookMarked] = useState(false);
 
+  const { mutate } = useSWRConfig();
+  const handleLike = (like: boolean) => {
+    fetch("api/likes", {
+      method: "PUT",
+      body: JSON.stringify({ id, like }),
+    }).then(() => mutate("api/posts")); //데이터가 변경되면 fetch
+  };
   return (
     <>
       <div className="flex justify-between my-2 px-4">
         <ToggleButton
           toggled={liked}
-          onToggle={setLiked}
+          onToggle={handleLike}
           onIcon={<HeartFillIcon />}
           offIcon={<HeartIcon />}
         />

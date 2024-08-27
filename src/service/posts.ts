@@ -84,6 +84,7 @@ export async function getSavedPostsOf(username: string) {
 function mapPosts(posts: SimplePostType[]) {
   return posts.map((post: SimplePostType) => ({
     ...post,
+    likes:post.likes??[],
     image: urlFor(post.image),
   }));
 }
