@@ -64,7 +64,12 @@ export async function getLikedPostsOf(username: string) {
       order(_createdAt desc)
       {
     ${simplePostProjection}
-    }`
+    }`,
+      {},
+
+      {
+        cache: "no-cache",
+      }
     )
     .then(mapPosts);
 }
@@ -76,7 +81,12 @@ export async function getSavedPostsOf(username: string) {
       | order(_createdAt desc)
       {
     ${simplePostProjection}
-    }`
+    }`,
+      {},
+
+      {
+        cache: "no-cache",
+      }
     )
     .then(mapPosts);
 }
@@ -84,7 +94,7 @@ export async function getSavedPostsOf(username: string) {
 function mapPosts(posts: SimplePostType[]) {
   return posts.map((post: SimplePostType) => ({
     ...post,
-    likes:post.likes??[],
+    likes: post.likes ?? [],
     image: urlFor(post.image),
   }));
 }
@@ -109,4 +119,3 @@ export async function dislikePost(postId: string, userId: string) {
     .unset([`likes[_ref=="${userId}"]`]) //제거
     .commit();
 }
-

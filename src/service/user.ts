@@ -66,7 +66,12 @@ export async function getUserProfile(username: string) {
       "following": count(following),
       "followers": count(followers),
       "posts": count(*[_type=="post" && author->username=="${username}"])
-    }`
+    }`,
+    {},
+
+    {
+      cache: "no-cache",
+    }
   );
 
   // 사용자 없으면 null 반환
