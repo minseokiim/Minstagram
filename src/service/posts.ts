@@ -99,6 +99,7 @@ function mapPosts(posts: SimplePostType[]) {
   }));
 }
 
+//좋아요
 export async function likePost(postId: string, userId: string) {
   return client
     .patch(postId)
@@ -118,4 +119,25 @@ export async function dislikePost(postId: string, userId: string) {
     .patch(postId)
     .unset([`likes[_ref=="${userId}"]`]) //제거
     .commit();
+}
+
+//댓글
+export async function addComment(
+  postId: string,
+  userId: string,
+  comment: string
+) {
+  return client
+    .patch(postId)
+    .setIfMissing({ comments: [] })
+    .append("comments", [
+      {
+        comment,
+        author: {
+          _ref: userId,
+          _type: "reference",
+        },
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
 }

@@ -87,6 +87,7 @@ export async function getUserProfile(username: string) {
   };
 }
 
+//북마크
 export async function addBookmarks(userId: string, postId: string) {
   return client
     .patch(userId)
