@@ -1,10 +1,11 @@
-import { FullPostType, SimplePostType } from "@/model/post";
-import useSWR from "swr";
+import { SimplePostType } from "@/model/post";
 import Image from "next/image";
 import PostUserAvatar from "./PostUserAvatar";
 import ActionBar from "./ActionBar";
 import CommentForm from "./CommentForm";
 import Avatar from "./Avatar";
+import useFullPost from "@/hooks/post";
+import useMe from "@/hooks/me";
 
 type Props = {
   post: SimplePostType;
@@ -12,10 +13,14 @@ type Props = {
 
 export default function PostDetail({ post }: Props) {
   const { id, userImage, username, image, createdAt, likes } = post;
-  //상위 컴포넌트에서 SimplePost타입을 사용하는데 comment정보가 필요하므로, 따로 내려받아야 함.
-  const { data } = useSWR<FullPostType>(`/api/posts/${id}`);
+  const { post: data, postComment } = useFullPost(id);
+
+  const { user } = useMe();
   const comments = data?.comments;
-  const handlePostComment = (comment:string) => {};
+  const handlePostComment = (comment: string) => {
+    user &&
+      postComment({ comment, username: user.username, image: user.image });
+  };
 
   return (
     <section className="flex w-full h-full">

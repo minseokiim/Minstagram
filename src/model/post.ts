@@ -13,7 +13,7 @@ export type FullPostType = {
 export type CommentType = {
   comment: string;
   username: string;
-  image: string;
+  image?: string|undefined;
 };
 
 // 홈에서 확인 가능한 간단한 정보들, comments배열 대신 숫자만나어게 대체
