@@ -15,7 +15,7 @@ export default function PostDetail({ post }: Props) {
   //상위 컴포넌트에서 SimplePost타입을 사용하는데 comment정보가 필요하므로, 따로 내려받아야 함.
   const { data } = useSWR<FullPostType>(`/api/posts/${id}`);
   const comments = data?.comments;
-  console.log(comments);
+  const handlePostComment = (comment:string) => {};
 
   return (
     <section className="flex w-full h-full">
@@ -52,7 +52,7 @@ export default function PostDetail({ post }: Props) {
         </ul>
 
         <ActionBar post={post} />
-        <CommentForm />
+        <CommentForm onPostComment={handlePostComment} />
       </div>
     </section>
   );
