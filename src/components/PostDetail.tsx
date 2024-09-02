@@ -1,11 +1,9 @@
-import { CommentType, SimplePostType } from "@/model/post";
+import { SimplePostType } from "@/model/post";
 import Image from "next/image";
 import PostUserAvatar from "./PostUserAvatar";
 import ActionBar from "./ActionBar";
-import CommentForm from "./CommentForm";
 import Avatar from "./Avatar";
 import useFullPost from "@/hooks/post";
-import useMe from "@/hooks/me";
 
 type Props = {
   post: SimplePostType;
