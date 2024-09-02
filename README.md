@@ -46,3 +46,6 @@
 
 - **클라이언트 필터링에서 서버 필터링으로 변경하기(+SWR로 최적화) :**
   https://kmmk808.tistory.com/222
+
+- **SWR의 Global mutate와 Bound mutate, optimisticData :**
+  https://kmmk808.tistory.com/231
