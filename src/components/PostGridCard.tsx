@@ -20,7 +20,7 @@ export default function PostGridCard({ post, priority = false }: Props) {
     if (!session?.user) {
       return signIn();
     }
-    setOpenModal(true)
+    setOpenModal(true);
   };
 
   return (

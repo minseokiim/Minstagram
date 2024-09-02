@@ -1,3 +1,4 @@
+import { useCacheKeys } from "@/context/cacheKeysContext";
 import { CommentType, SimplePostType } from "@/model/post";
 import { useCallback } from "react";
 import useSWR from "swr";
@@ -16,13 +17,14 @@ async function addComment(id: string, comment: string) {
   }).then((res) => res.json());
 }
 
-export default function usePosts() {
+export default function usePosts(cacheKey: string = "/api/posts") {
+  const cacheKeys = useCacheKeys();
   const {
     data: posts,
     isLoading,
     error,
-    mutate, //global mutate가 아닌 api에 바운드 된 mutate
-  } = useSWR<SimplePostType[]>("/api/posts");
+    mutate,
+  } = useSWR<SimplePostType[]>(cacheKeys.postsKey);
 
   const setLike = useCallback(
     (post: SimplePostType, username: string, like: boolean) => {
