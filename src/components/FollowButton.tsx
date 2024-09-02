@@ -11,7 +11,7 @@ type Props = {
 // 유저 정보가 필요함.
 export default function FollowButton({ user }: Props) {
   //1. 로그인 한 내가 사용자를 팔로우하고 있는지에 따라 뜨는 버튼의 문구가 바뀜.
-  const { user: loggedInUser } = useMe();
+  const { user: loggedInUser,toggleFollow } = useMe();
   const { username } = user;
 
   const showButton = loggedInUser && loggedInUser.username !== username;
