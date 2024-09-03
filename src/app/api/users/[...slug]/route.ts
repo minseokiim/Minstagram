@@ -1,6 +1,8 @@
 import { getLikedPostsOf, getPostsOf, getSavedPostsOf } from "@/service/posts";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 type Context = {
   params: {
     slug: string[]; // slug/slug/slug .. 중첩 가능하게 배열로

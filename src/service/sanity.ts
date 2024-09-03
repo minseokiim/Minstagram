@@ -8,6 +8,9 @@ export const client = createClient({
   useCdn: false, //동적 데이터니까 캐시 안함
   apiVersion: "2024-07-24", // 현재 날짜
   token: process.env.SANITY_SECRET_TOKEN,
+  fetch: {
+    cache: "no-store",
+  },
 });
 
 // * sanity 이미지 최적화 해서 가져오는 법
