@@ -1,5 +1,9 @@
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/b688acd1-6c3c-42a0-baa5-eb7db2e00db3">
 
+### 🌐Domain
+
+- **https://minstagram-vert.vercel.app**<br/><br/>
+
 ### 🍀Stack
 
 - **Client:** Next.js 14 <br/>
@@ -8,7 +12,7 @@
 - **Data Fetching:** SWR <br/>
 - **Auth:** NextAuth <br/>
 - **CSS:** Tailwind CSS <br/>
-- **Deployment:** <br/><br/>
+- **Deployment:** Vercel<br/><br/>
 
 ### 💻Local
 
