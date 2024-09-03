@@ -8,7 +8,6 @@ import BookmarkFillIcon from "./ui/icons/BookmarkFillIcon";
 import { CommentType, SimplePostType } from "@/model/post";
 import usePosts from "@/hooks/posts";
 import useMe from "@/hooks/me";
-import { useState } from "react";
 import CommentForm from "./CommentForm";
 
 type Props = {
@@ -40,6 +39,7 @@ export default function ActionBar({ post, children, onComment }: Props) {
     <>
       <div className="flex justify-between my-2 px-4">
         <ToggleButton
+          title={liked ? "unlike" : "like"}
           toggled={liked}
           onToggle={handleLike}
           onIcon={<HeartFillIcon />}
@@ -47,6 +47,7 @@ export default function ActionBar({ post, children, onComment }: Props) {
         />
 
         <ToggleButton
+          title={bookmarked ? "unbookmark" : "bookmark"}
           toggled={bookmarked}
           onToggle={handleBookmark}
           onIcon={<BookmarkFillIcon />}

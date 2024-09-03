@@ -12,9 +12,17 @@ type Props = {
 };
 
 const tabs = [
-  { type: "posts", icon: <PostIcon /> },
-  { type: "saved", icon: <BookmarkIcon className="h-3 w-3" /> },
-  { type: "liked", icon: <HeartIcon className="h-3 w-3" /> },
+  { type: "posts", icon: <PostIcon />, title: "User Posts" },
+  {
+    type: "saved",
+    icon: <BookmarkIcon className="h-3 w-3" />,
+    title: "Saved Posts",
+  },
+  {
+    type: "liked",
+    icon: <HeartIcon className="h-3 w-3" />,
+    title: "Liked Posts",
+  },
 ];
 
 export default function UserPost({ user: { username } }: Props) {
@@ -32,7 +40,9 @@ export default function UserPost({ user: { username } }: Props) {
             onClick={() => setQuery(tab.type)}
             className={`mx-12 p-4 cursor-pointer border-black ${tab.type === query && "font-bold border-t"}`}
           >
-            <button className="scale-150 md:scale-100">{tab.icon}</button>
+            <button className="scale-150 md:scale-100" aria-label={tab.title}>
+              {tab.icon}
+            </button>
             <span className="hidden md:inline">{tab.type}</span>
           </li>
         ))}
@@ -40,7 +50,7 @@ export default function UserPost({ user: { username } }: Props) {
       <CacheKeysContext.Provider
         value={{ postsKey: `/api/users/${username}/${query}` }}
       >
-        <PostGrid/>
+        <PostGrid />
       </CacheKeysContext.Provider>
     </section>
   );
