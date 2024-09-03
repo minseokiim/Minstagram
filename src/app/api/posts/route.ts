@@ -1,12 +1,10 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { createPost, getFollowingPostsOf } from "@/service/posts";
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { withSessionUser } from "@/util/session";
 
 // 전체 포스트를 받는 api
 export async function GET() {
-  return withSessionUser((user) => {
+  return withSessionUser(async(user) => {
     return getFollowingPostsOf(user.username).then((data) =>
       NextResponse.json(data)
     );

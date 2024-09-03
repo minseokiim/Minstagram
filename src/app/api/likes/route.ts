@@ -7,7 +7,7 @@ export async function PUT(req: NextRequest) {
     // 사용자의 요청 읽기
     const { id, like } = await req.json();
 
-    if (!id || like === undefined) {
+    if (!id || like == null) {
       return new Response("Bad Request", { status: 400 });
     }
 

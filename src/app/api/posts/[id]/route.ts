@@ -10,7 +10,7 @@ type Context = {
 
 // 특정 id 포스트를 받는 api
 export async function GET(_: NextRequest, context: Context) {
-  return withSessionUser(async (user) => {
+  return withSessionUser(async () => {
     return getPost(context.params.id).then((data) => NextResponse.json(data));
   });
 }
