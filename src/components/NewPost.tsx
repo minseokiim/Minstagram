@@ -5,6 +5,8 @@ import FilesIcon from "./ui/icons/FilesIcon";
 import Button from "./Button";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import GridSpinner from "./GridSpinner";
 
 type Props = {
   user: AuthUserType;
@@ -19,6 +21,7 @@ export default function NewPost({ user: { username, image } }: Props) {
   //상태를 이용해서 관리하면 텍스트 입력할 때마다 리렌더링
   //따라서, 리렌더링을 발생시키지 않는 ref 전달
 
+  const router = useRouter();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const files = e.target?.files;
@@ -56,10 +59,31 @@ export default function NewPost({ user: { username, image } }: Props) {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("text", textRef.current?.value ?? "");
+
+    fetch("/api/posts", { method: "POST", body: formData })
+      .then((res) => {
+        if (!res.ok) {
+          setError(`${res.status} ${res.statusText}`);
+          return;
+        }
+        router.push("/");
+      })
+      .catch((err) => setError(err.toString()))
+      .finally(() => setLoading(false));
   };
 
   return (
     <section className="w-full max-w-xl flex flex-col items-center mt-6">
+      {loading && (
+        <div className="absolute inset-0 z-20 text-center pt-[30%] bg-sky-500/20">
+          <GridSpinner />
+        </div>
+      )}
+      {error && (
+        <p className="w-full bg-red-100 text-red-600 text-center p-4 mb-4 font-bold">
+          {error}
+        </p>
+      )}
       <PostUserAvatar username={username} image={image ?? ""} />
       <form className="w-full flex flex-col mt-2" onSubmit={handleSubmit}>
         <input
