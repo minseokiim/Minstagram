@@ -1,3 +1,5 @@
+import NewPost from "@/components/NewPost";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -8,9 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default async function page() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/auth/signin");
   }
-  return <div>New Post</div>;
+  return (
+    <div>
+      <NewPost user={session.user} />
+    </div>
+  );
 }
