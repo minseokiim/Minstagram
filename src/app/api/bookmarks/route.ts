@@ -1,25 +1,20 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { addBookmarks, removeBookmarks } from "@/service/user";
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { withSessionUser } from "@/util/session";
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  return withSessionUser(async (user) => {
+    const { id, bookmark } = await req.json();
 
-  if (!user) {
-    return new Response("Authentication Error", { status: 401 });
-  }
+    //명시적으로 null인 경우와 undefined인 경우 같이 체크하려면 == null로 체크
+    if (!id || bookmark == null) {
+      return new Response("Bad Request", { status: 400 });
+    }
 
-  const { id, bookmark } = await req.json();
+    const request = bookmark ? addBookmarks : removeBookmarks;
 
-  if (!id || bookmark === undefined) {
-    return new Response("Bad Request", { status: 400 });
-  }
-
-  const request = bookmark ? addBookmarks : removeBookmarks;
-
-  return request(user.id, id)
-    .then((res) => NextResponse.json(res))
-    .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+    return request(user.id, id)
+      .then((res) => NextResponse.json(res))
+      .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+  });
 }

@@ -14,6 +14,7 @@ export default async function page() {
   if (!session) {
     redirect("/auth/signin");
   }
+
   return (
     <div className="w-full flex justify-center items-center">
       <NewPost user={session.user} />
