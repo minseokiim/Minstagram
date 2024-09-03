@@ -10,7 +10,7 @@
 - **CSS:** Tailwind CSS <br/>
 - **Deployment:** <br/><br/>
 
-### 💻Getting Started
+### 💻Local
 
 - `npm run dev` (localhost:3000)<br/>
 - `sanity dev` (localhost:3333)<br/><br/>
