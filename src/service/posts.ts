@@ -150,7 +150,7 @@ export async function createPost(userId: string, text: string, file: Blob) {
     method: "POST",
     headers: {
       "content-type": file.type,
-      authorization: `Bearer ${process.env.SANITY_SECRET_TOKEN}`,
+      authorization: `Bearer ${process.env.SANITY_STUDIO_SECRET_TOKEN}`,
     },
     body: file,
   })
