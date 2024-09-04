@@ -1,8 +1,10 @@
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/b688acd1-6c3c-42a0-baa5-eb7db2e00db3">
+## @Minstagram (https://minstagram-vert.vercel.app)
 
-### 🌐Domain
+| ![image1](https://github.com/user-attachments/assets/05970686-5e47-4ed6-b3ab-d2d10aa52400) <br> *홈(팔로우한 유저들의 글과 프로필만 뜸)* | ![image2](https://github.com/user-attachments/assets/f97f5ef3-215e-49c8-869c-21afca3087d1) <br> *유저 프로필(올린 글, 북마크/좋아요 한 글 볼 수 있고, 팔로우 가능)* |
+|:---:|:---:|
+| ![image3](https://github.com/user-attachments/assets/f7754dce-0af1-4c9f-af48-899857ed1798) <br> **_게시글(댓글, 북마크, 좋아요 가능)_** | ![image4](https://github.com/user-attachments/assets/09402f4e-0f78-4e6c-b0de-ebd8be1141f2) <br> **_팔로우 할 유저를 찾을 수 있음_** |
 
-- **https://minstagram-vert.vercel.app**<br/><br/>
+<br/>
 
 ### 🍀Stack
 
