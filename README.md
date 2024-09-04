@@ -1,8 +1,4 @@
 ## @Minstagram (https://minstagram-vert.vercel.app)
-|  ***홈*** ![image1](https://github.com/user-attachments/assets/4db8d05a-176f-472b-86f2-e87b8282d2f7) |  ***유저 프로필***  ![image2](https://github.com/user-attachments/assets/a1a98754-c199-462f-a393-18e3956a27a8)  |  ***게시글 올리기*** ![image3](https://github.com/user-attachments/assets/b2852eb5-e64b-4374-8979-c00f9a600246) | ***유저 검색*** ![image4](https://github.com/user-attachments/assets/d98d9f21-bfd5-44a3-9761-6e3509bc4829)  |
-|:---:|:---:|:---:|:---:|
-
-<hr/>
 
 | ![image1](https://github.com/user-attachments/assets/05970686-5e47-4ed6-b3ab-d2d10aa52400) <br> *:홈(팔로우한 유저들의 글과 프로필만 뜸)* | ![image2](https://github.com/user-attachments/assets/f97f5ef3-215e-49c8-869c-21afca3087d1) <br> *:유저 프로필(올린 글, 북마크/좋아요 한 글 볼 수 있고, 팔로우 가능)* |
 |:---:|:---:|
@@ -10,6 +6,24 @@
 
 <hr/>
 
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="width: 25%; text-align: center;">
+      <img src="https://github.com/user-attachments/assets/d5ccc1ca-9398-45bc-8751-da5defeeafe1" alt="image1" style="width: 100%; height: auto;" /> <br> <b>홈</b>
+    </td>
+    <td style="width: 25%; text-align: center;">
+      <img src="https://github.com/user-attachments/assets/166971d8-a6c0-4a25-9471-51085633ca35" alt="image4" style="width: 100%; height: auto;" /> <br> <b>유저 검색</b>
+    </td>
+    <td style="width: 25%; text-align: center;">
+      <img src="https://github.com/user-attachments/assets/f84d1d4e-d274-4ba3-a483-77ccb86d9582" alt="image2" style="width: 100%; height: auto;" /> <br> <b>유저 프로필</b>
+    </td>
+    <td style="width: 25%; text-align: center;">
+      <img src="https://github.com/user-attachments/assets/b2852eb5-e64b-4374-8979-c00f9a600246" alt="image3" style="width: 100%; height: auto;" /> <br> <b>게시글 올리기</b>
+    </td>
+  </tr>
+</table>
+
+<br/>
 
 ### 🍀Stack
 
