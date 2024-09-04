@@ -156,6 +156,12 @@ export async function createPost(userId: string, text: string, file: Blob) {
   })
     .then((res) => res.json())
     .then((result) => {
+      console.log("API Response:", result);
+
+      if (!result || !result.document) {
+        throw new Error("Failed to upload file. Result is undefined.");
+      }
+
       return client.create(
         {
           _type: "post",

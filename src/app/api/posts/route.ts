@@ -4,7 +4,7 @@ import { withSessionUser } from "@/util/session";
 
 // 전체 포스트를 받는 api
 export async function GET() {
-  return withSessionUser(async(user) => {
+  return withSessionUser(async (user) => {
     return getFollowingPostsOf(user.username).then((data) =>
       NextResponse.json(data)
     );
