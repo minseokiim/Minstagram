@@ -36,6 +36,7 @@
 - **Deployment:** Vercel<br/><br/>
 
 ### 💻Local
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/be0712b4-205b-4283-af65-fb86eab53215">
 
 - `npm run dev` (localhost:3000)<br/>
 - `sanity dev` (localhost:3333)<br/><br/>
